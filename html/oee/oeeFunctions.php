@@ -1165,7 +1165,7 @@ function indirectLaborWorkCentersDailyShort($conn) {
         <tr>
             <td style="background: lightgrey; font-weight: bold; text-align: center; padding:10; margin:10;">Work Center</td>
             <td style="background: lightgrey; font-weight: bold; text-align: center; padding:10; margin:10;">PWO</td>
-            <td style="background: lightgrey; font-weight: bold; text-align: center; padding:10; margin:10;">Time</td>
+            <td style="background: lightgrey; font-weight: bold; text-align: center; padding:10; margin:10;">Down Time</td>
         </tr>';
 
     $bgcount = 0;

@@ -62,7 +62,7 @@ require_once './functions/scrapFunction.php';
 <body background=#ffffff>
     <!-- PO: Controls the border that surrounds the entire dashboard,
 	     including the navigation menu -->
-    <table style="width: 100%; max-width: 100%; border: 0px solid #000;">
+    <table style="width: 50%; max-width: 100%; border: 0px solid #000;">
 	<tr>
 	   <td colspan=4>
 		<div style="display: flex; align-items: center;">
@@ -481,17 +481,15 @@ require_once './functions/scrapFunction.php';
                         	<?php echo poweredBy();?>
             </td>
 	    <td> <!-- PO: 4th column -->
-			<table style="border: 0px solid;">
- 			<tr>
-  			<td>
+			<table style="border: 0px solid; width: 300px;">
 				<!-- TCI Scrap -->
 				<?php
 					$conn = connectRubiconTci();
-					echo "<table border='1'>";
+					#echo "<table border='1'>";
 					 echo "<tr style=\"background-color: lightgrey;\"><th colspan=4 style=\"text-align: center;\">TCI Scrap</th></tr>";
 					echo "<tr style=\"background-color: lightgrey;\"><th>Scrap Lbs</th><th>Scrap Qty</th><th>Scrap Ext</th><th><a href=scrap.php style=\"text-decoration: none; color: black; font-weight: bold;\">Today</a></th></tr>";
 					echo getTodayScrapTotals($conn);
-					echo "</table>";
+					#echo "</table>";
 				?>
 				 </td>
 			     </tr>
@@ -499,19 +497,19 @@ require_once './functions/scrapFunction.php';
 				 <td>
 				<?php
 					$conn = connectRubiconTci();
-					echo "<table border='1'>";
+					#echo "<table border='1'>";
 					echo "<tr style=\"background-color: lightgrey;\"><th>Scrap Lbs</th><th>Scrap Qty</th><th>Scrap Ext</th><th><a href=scrap.php style=\"text-decoration: none; color: black; font-weight: bold;\">Month-to-Date</th></tr>";
 					echo getMonthToDateScrapTotals($conn);
-					echo "</table>";
+					#echo "</table>";
 				?>
 			      <tr>
 				  <td>
 				<?php
 					$conn = connectRubiconTci();
-					echo "<table border='1'>";
+					#echo "<table border='1'>";
 					echo "<tr style=\"background-color: lightgrey;\"><th>Scrap Lbs</th><th>Scrap Qty</th><th>Scrap Ext</th><th><a href=scrap.php style=\"text-decoration: none; color: black; font-weight: bold;\">This Quarter</th></tr>";
 					echo getQuartlyToDateScrapTotals($conn);
-					echo "</table>";
+					#echo "</table>";
 				?>
 			         </td>
 			      </tr>
@@ -519,15 +517,15 @@ require_once './functions/scrapFunction.php';
 				 <td>
 				<?php
 					$conn = connectRubiconTci();
-					echo "<table border='1'>";
+					#echo "<table border='1'>";
 					echo "<tr style=\"background-color: lightgrey;\"><th>Scrap Lbs</th><th>Scrap Qty</th><th>Scrap Ext</th><th><a href=scrap.php style=\"text-decoration: none; color: black; font-weight: bold;\">This Year</th></tr>";
 					echo getYearToDateScrapTotals($conn);
-					echo "</table>";
+					#echo "</table>";
 				?>
 			         </td>
 			     </tr>
                               <tr>
-                                 <td>
+                                 <td colspan=4>
 				<iframe 
     					src="scraplinegraph.php" 
     					width="750" 
@@ -536,8 +534,6 @@ require_once './functions/scrapFunction.php';
     					scrolling="no">
 				</iframe>
 				<hr>
-			        </td>
-			    </tr>
 			</table>
 <!-- TICKER -->
         <tr>

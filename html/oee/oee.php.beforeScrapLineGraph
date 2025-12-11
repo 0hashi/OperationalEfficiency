@@ -24,9 +24,7 @@ require_once './functions/scrapFunction.php';
 ?>
 <html>
 <head>
-    <!-- meta tag below - change dashboard view every X seconds. bounce from the OE dashboard to the sales dashboard -->
-    <!--meta http-equiv="refresh" content="60; URL='https://tci-bt-linux01/dev-oee/salesdashboard.php'"-->
-    <title>DevTOE</title>
+    <title>TOE</title>
 	<!-- Load the chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<!-- A pointer to CSS that:
@@ -60,31 +58,27 @@ require_once './functions/scrapFunction.php';
 
 </head>
 <body background=#ffffff>
-    <!-- PO: Controls the border that surrounds the entire dashboard,
-	     including the navigation menu -->
-    <table style="width: 50%; max-width: 100%; border: 0px solid #000;">
-	<tr>
-	   <td colspan=4>
-		<div style="display: flex; align-items: center;">
-    		<img src="pics/TransCableLogo.png" style="height: 60px; margin-right: 10px;">
-    		<h2 style="
-        		flex: 1;
-        		text-align: center;
-        		align: center;
-        		font-family: 'Poppins', sans-serif;
-        		font-size: 2.0em;
-        		background: linear-gradient(to right, #0077ff, #00c3ff);
-        		-webkit-background-clip: text;
-        		-webkit-text-fill-color: transparent;
-        		text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-        		letter-spacing: 1px;
-        		margin: 0;
-    		">
-        	TCI Operational Efficiency
-    		</h2>
-	   </td>
-	</tr>
-        <tr> 
+<div style="display: flex; align-items: center;">
+    <img src="pics/TransCableLogo.png" style="height: 60px; margin-right: 10px;">
+    <h2 style="
+        flex: 1;
+        text-align: center;
+        align: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.0em;
+        background: linear-gradient(to right, #0077ff, #00c3ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        letter-spacing: 1px;
+        margin: 0;
+    ">
+        TCI Operational Efficiency
+    </h2>
+</div>
+    <!-- PO: Controls the border that surrounds the entire dashboard, including the navigation menu -->
+    <table style="width: 1000px; max-width: 100%; border: 0px solid #000;">
+        <tr>
             <!-- Left Column: Navigation table -->
             <td style="width: 1%; vertical-align: top;">
                 <!-- PO: Navigation Links (Main, Quantity, Operations)
@@ -98,8 +92,7 @@ require_once './functions/scrapFunction.php';
                     0 8px 10px -5px rgba(0, 123, 255, 0.6);   /* Bottom glow */">
                     <thead>
                         <tr>
-			    <!-- PO: controls the border of the links in the main
-				 navigation menu table  -->
+			    <!-- PO: controls the border of the links in the main navigation menu table  -->
                             <th style="width: 100%; border: 0px solid #000;">
                     <?php echo displayClock();?>
                     <a href="http://tci-bt-linux01/oee/oee.php" style="text-decoration: none; color: #36A2EB;">Main</a>
@@ -111,22 +104,19 @@ require_once './functions/scrapFunction.php';
 							</th>
                         </tr>
                         <tr>
-			    <!-- PO: Controls a light blue border around the words
-				 "Shift Aggregate" in the main navigation menu  -->
+			    <!-- PO: Controls a light blue border around the words "Shift Aggregate" in the main navigation menu  -->
                             <td colspan=2 style="font-weight: bold; text-align: center; background-color: lightgrey; border: 0px solid #ddecf0;">
                                 Shift Aggregate
                             </td>
                         </tr>
                         <tr>
-			    <!-- PO: controls the border around the words "1st Shift"
-				 on the right side, in the main navigation menu  -->
+			    <!-- PO: controls the border around the words "1st Shift" on the right side, in the main navigation menu  -->
                             <th style="width='50%'; width: 100%; border: 0px solid #000;">
                                 <strong><p>
 
                                 <a href="http://tci-bt-linux01/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">1st Shift</a>
                             </th>
-			    <!-- PO: controls the border around the 1st Shift total in
-				 the main navigation menu  -->
+			    <!-- PO: controls the border around the 1st Shift total in the main navigation menu  -->
                             <th style="width='50%'; width: 100%; border: 0px solid #000;">
                                 <?php
                                     $conn = connectRubiconTci();
@@ -135,14 +125,12 @@ require_once './functions/scrapFunction.php';
                             </th>
                         </tr>
                         <tr>
-			    <!-- PO: controls the border around the text "2nd Shift" on
-				 the right side, in the main navigation menu  -->
+			    <!-- PO: controls the border around the words "2nd Shift" on the right side, in the main navigation menu  -->
                             <th style="width='50%'; width: 100%; border: 0px solid #000;">
                                 <strong><p>
                                 <a href="http://tci-bt-linux01/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">2nd Shift</a>
                             </th>
-			    <!-- PO: controls the border around the 2nd Shift numbers (footage) in the
-				 main navigation menu  -->
+			    <!-- PO: controls the border around the 2nd Shift total in the main navigation menu  -->
                             <th style="width='50%'; width: 100%; border: 0px solid #000;">
                                 <?php
                                     $conn = connectRubiconTci();
@@ -150,14 +138,11 @@ require_once './functions/scrapFunction.php';
                                 ?>
                             </th>
                             <tr>
-			    <!-- PO: controls the border around the text "3rd Shift" -->
-                            <th style="width='50%'; width: 100%; border: 0px solid #000;">
+                            <th style="width='50%'; width: 100%;">
                                 <strong><p>
                                 <a href="http://tci-bt-linux01/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">3rd Shift</a>
                             </th style="width='50%'; width: 100%;">
-			    <!-- PO: controls the border around the 3rd Shift numbers (footage) in the
-				 main navigation menu  -->
-                            <th style="width='50%'; width: 100%; border: 0px solid #000;">
+                            <th>
                                 <?php
                                     $conn = connectRubiconTci();
                                     echo thirdShiftTotalManufacturingReceiptQuantity($conn);
@@ -169,12 +154,10 @@ require_once './functions/scrapFunction.php';
                 </table>
             </td>
 
-            <!-- PO: Table definition with tables for Operator table, LRB Manufacturing
-		 Receipt table, Sales gauge,
+            <!-- Table definition with tables for Operator table, LRB Manufacturing Receipt table, Sales gauge,
                   Sales Order status, and Work Center down time -->
             <td style="width: 400px; align=left; text-align=left">
-
-                <!-- PO: Table with Operator, LRB Manufacturing, and Work Center tables -->
+                <!-- Table surrounding the main dashboard with all tables except for the main navigation menu -->
                 <table style="width: 350px; max-width: 50%; border: 0px solid #000;">
                     <tbody style="align: center;">
                         <strong></strong>
@@ -182,17 +165,17 @@ require_once './functions/scrapFunction.php';
                 <!-- PO: controls the border around the Operator list with quarterly numbers -->
                 <th style="width: 200px; border: 0px solid #000;">
                     <?php
-			$conn = connectRubiconTci();
-			displayQuarterlyTransactionTotals($conn);
-		    ?>
+						$conn = connectRubiconTci();
+						displayQuarterlyTransactionTotals($conn);
+					?>
 				</th>
                 <th style="text-align: center;">
 
-		<!-- PO: Border for table containing LRB Manufacturing Receipt, Sales Gague, Sales pie chart, and Work Center PWOs  -->
+		<!-- PO: controls the border around the "LRB Manufacturing Receipt" table  -->
                 <table style="width: 100%; max-width: 100%; border: 0px solid #000;">
 
                     <tr>
-                        <!--  Border for the table row with the text LRB Manufacturing Receipt -->
+                        <!--  LRB Manufacturing Receipt (Center top - above the sales gauge) -->
                         <td colspan=3 style="text-align: center; background-color: lightgrey; border: 0px solid #000">
                             <strong>LRB Manufacturing Receipt</strong>
                         </td>
@@ -253,9 +236,9 @@ require_once './functions/scrapFunction.php';
                                 echo "$currentMonth";
                             ?>
                             </a>
-                            </strong>
-			</td>
-			<td>
+                            </strong></p>
+                        </td>
+                        <td style="background-color: ;">
                             <?php
                                 $conn = connectRubiconTci();
                                 total_output_this_month($conn);
@@ -263,11 +246,9 @@ require_once './functions/scrapFunction.php';
                         </td>
                     </tr>
                 </th>
-                    <!-- Table row for the monthly sales goal gage and pie chart with
-			 Open Sales Orders -->
+                    <!-- Table row for the monthly sales goal gage and pie chart with Open Sales Orders -->
                 <tr>
-                <td colspan=3 style="text-align: center; align: center;">
-			<hr> <!-- PO: hr above the Sales gas gague -->
+                <td colspan=2 style="text-align: center; align: center;">
 			<strong>
                         <?php
                             // Get the current month
@@ -280,7 +261,7 @@ require_once './functions/scrapFunction.php';
                             echo "$currentMonth Sales Goal<br> (Week $weekOfMonth)";
                         ?>
                     </strong>
-                    <?php # Query Maria for the open sales orders Pie chart
+                    <?php # Query Maria for the open sales orders - Pie chart
                         $conn = connectRubiconTci();
                         $result = $conn->query("SELECT status, COUNT(*) as count FROM v_sos WHERE open = '1' GROUP BY status");
 
@@ -369,16 +350,12 @@ require_once './functions/scrapFunction.php';
                             chart.draw(data, options);
                           }
                         </script>
-			<!-- Breaks to drop content below the Sales Pie Chart -->
-			<br><br><br>
 			<a href='salesdashboard.php' style="text-decoration: none; color: black;">Sales Dashboard</a>
                 </td>
                 </tr>
                 <tr>
-                    <td colspan=3>
-<hr>
-                        <!-- Table definition for work center down time, Work Center,
-			     PWO, Time (Under pie chart) -->
+                    <td>
+                        <!-- Table definition for work center down time, Work Center, PWO, Time (Under pie chart) -->
                         <?php
                             $conn = connectRubiconTci();
                             echo indirectLaborWorkCentersDailyShort($conn);
@@ -406,8 +383,7 @@ require_once './functions/scrapFunction.php';
                         }]
                         },
                         options: {
-                            responsive: false,
-			    maintainAspectRatio: false,
+                            responsive: true,
                             onClick: function (evt, elements) {
                             if (elements.length > 0) {
                                 const chartIndex = elements[0].index;
@@ -446,8 +422,7 @@ require_once './functions/scrapFunction.php';
 			<!-- PO: controls the border around the work center table  -->
                         <table style="width: 100%; max-width: 100%; border: 0px solid #000;">
                             <tr rowspan=2 style="background-color: lightgrey;">
-				<!-- PO: controls the border around the "day, date" above
-				     the work center table -->
+				<!-- PO: controls the border around the "day, date" above the work center table -->
                                 <td colspan=10 style="font-weight: bold; font-size: 18px; text-align: center;
                                 border: 0px solid #000; border-collapse: collapse;">
 
@@ -462,79 +437,58 @@ require_once './functions/scrapFunction.php';
                             <tr style="background-color: lightgrey; font-weight: bold; font-size: 16px;">
                                 <td width='50%' style="text-align: center;">Work Center</td>
                                 <td width='50%' style="text-align: center;">1st</td>
-                                <td width='50%' style="text-align: center;">U</td>
-                                <td width='50%' style="text-align: center;">E</td>
+                                <td width='50%' style="text-align: center;">?</td>
+                                <td width='50%' style="text-align: center;">?</td>
                                 <td style="text-align: center;">2nd</td>
-                                <td style="text-align: center;">U</td>
-                                <td style="text-align: center;">E</td>
+                                <td style="text-align: center;">?</td>
+                                <td style="text-align: center;">?</td>
                                 <td style="text-align: center;">3rd</td>
-                                <td style="text-align: center;">U</td>
-                                <td style="text-align: center;">E</td>
+                                <td style="text-align: center;">?</td>
+                                <td style="text-align: center;">?</td>
                                 <?php
                                     $conn = connectRubiconTci();
                                     echo workCenterOutput($conn);
                                 ?>
-                                </td>
                             </tr>
                         </table>
-				<hr> <!-- PO: hr below the work center output table -->
-                        	<?php echo poweredBy();?>
+			<hr>
+                        <!-- TCI Scrap -->
+			<?php
+				$conn = connectRubiconTci();
+				echo "<table border='1'>";
+				echo "<tr style=\"background-color: lightgrey;\"><th colspan=4 style=\"text-align: center;\">TCI Scrap</th></tr>";
+				echo "<tr style=\"background-color: lightgrey;\"><th>Scrap Lbs</th><th>Scrap Qty</th><th>Scrap Ext</th><th><a href=scrap.php style=\"text-decoration: none; color: black; font-weight: bold;\">Today</a></th></tr>";
+				echo getTodayScrapTotals($conn);
+				echo "</table>";
+			?>
+
+			<?php
+				$conn = connectRubiconTci();
+				echo "<table border='1'>";
+				echo "<tr style=\"background-color: lightgrey;\"><th>Scrap Lbs</th><th>Scrap Qty</th><th>Scrap Ext</th><th><a href=scrap.php style=\"text-decoration: none; color: black; font-weight: bold;\">Month-to-Date</a></th></tr>";
+				echo getMonthToDateScrapTotals($conn);
+				echo "</table>";
+			?>
+                        <?php
+                                $conn = connectRubiconTci();
+                                echo "<table border='1'>";
+                                echo "<tr style=\"background-color: lightgrey;\"><th>Scrap Lbs</th><th>Scrap Qty</th><th>Scrap Ext</th><th><a href=scrap.php style=\"text-decoration: none; color: black; font-weight: bold;\">This Quarter</th></tr>";
+                                echo getQuartlyToDateScrapTotals($conn);
+                                echo "</table>";
+                        ?>
+                        <?php
+                                $conn = connectRubiconTci();
+                                echo "<table border='1'>";
+                                echo "<tr style=\"background-color: lightgrey;\"><th>Scrap Lbs</th><th>Scrap Qty</th><th>Scrap Ext</th><th><a href=scrap.php style=\"text-decoration: none; color: black; font-weight: bold;\">This Year</th></tr>";
+                                echo getYearToDateScrapTotals($conn);
+                                echo "</table>";
+                        ?>
+                        <?php echo poweredBy();?>
+                    </div>
+                </th>
+				</table>
             </td>
-	    <td> <!-- PO: 4th column -->
-			<table style="border: 0px solid; width: 300px;">
-				<!-- TCI Scrap -->
-				<?php
-					$conn = connectRubiconTci();
-					#echo "<table border='1'>";
-					 echo "<tr style=\"background-color: lightgrey;\"><th colspan=4 style=\"text-align: center;\">TCI Scrap</th></tr>";
-					echo "<tr style=\"background-color: lightgrey;\"><th>Scrap Lbs</th><th>Scrap Qty</th><th>Scrap Ext</th><th><a href=scrap.php style=\"text-decoration: none; color: black; font-weight: bold;\">Today</a></th></tr>";
-					echo getTodayScrapTotals($conn);
-					#echo "</table>";
-				?>
-				 </td>
-			     </tr>
-			     <tr>
-				 <td>
-				<?php
-					$conn = connectRubiconTci();
-					#echo "<table border='1'>";
-					echo "<tr style=\"background-color: lightgrey;\"><th>Scrap Lbs</th><th>Scrap Qty</th><th>Scrap Ext</th><th><a href=scrap.php style=\"text-decoration: none; color: black; font-weight: bold;\">Month-to-Date</th></tr>";
-					echo getMonthToDateScrapTotals($conn);
-					#echo "</table>";
-				?>
-			      <tr>
-				  <td>
-				<?php
-					$conn = connectRubiconTci();
-					#echo "<table border='1'>";
-					echo "<tr style=\"background-color: lightgrey;\"><th>Scrap Lbs</th><th>Scrap Qty</th><th>Scrap Ext</th><th><a href=scrap.php style=\"text-decoration: none; color: black; font-weight: bold;\">This Quarter</th></tr>";
-					echo getQuartlyToDateScrapTotals($conn);
-					#echo "</table>";
-				?>
-			         </td>
-			      </tr>
-			      <tr>
-				 <td>
-				<?php
-					$conn = connectRubiconTci();
-					#echo "<table border='1'>";
-					echo "<tr style=\"background-color: lightgrey;\"><th>Scrap Lbs</th><th>Scrap Qty</th><th>Scrap Ext</th><th><a href=scrap.php style=\"text-decoration: none; color: black; font-weight: bold;\">This Year</th></tr>";
-					echo getYearToDateScrapTotals($conn);
-					#echo "</table>";
-				?>
-			         </td>
-			     </tr>
-                              <tr>
-                                 <td colspan=4>
-				<iframe 
-    					src="scraplinegraph.php" 
-    					width="750" 
-    					height="250" 
-    					style="border:0; overflow:hidden"
-    					scrolling="no">
-				</iframe>
-				<hr>
-			</table>
+        </tr>
 <!-- TICKER -->
         <tr>
             <td>
