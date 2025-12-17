@@ -8,7 +8,7 @@ body {
 
 /* Page Title */
 .page-title {
-  font-size: 1em;
+  font-size: 2rem;
   background: linear-gradient(to right, #0077ff, #00c3ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

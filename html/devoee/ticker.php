@@ -15,7 +15,7 @@ $TRIPLE_THIRD_SHIFT = false;
 
 // Static ticker messages
 $tickerMessages = [
-    "🚨 Safety meeting every Friday at 8:00am",
+    "🚨 Safety meeting every Friday at 7:55am",
     "🌟🌟🌟 Trans Cable International 🌟🌟🌟"
 ];
 

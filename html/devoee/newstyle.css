@@ -5,6 +5,7 @@ CSS for TOEE - Trans Cable Overall Equipment Efficiency
 /* Body / global */
 body {
     font-family: 'Poppins', sans-serif;
+    /* background: #f5f7fa; */
     background: #ffffff;
     color: #333;
     margin: 0;

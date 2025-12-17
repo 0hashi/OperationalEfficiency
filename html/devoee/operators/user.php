@@ -19,7 +19,7 @@ require_once '../oeeFunctions.php';
 
 <html>
 <head>
-    <title>Dev TOE</title>
+    <title>TOEE</title>
 	<!-- Load the chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<!-- A pointer to CSS that makes it pretty. -->

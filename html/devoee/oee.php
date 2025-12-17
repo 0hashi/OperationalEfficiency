@@ -261,13 +261,19 @@ require_once './functions/scrapFunction.php';
                                 total_output_this_month($conn);
                             ?>
                         </td>
+		    <tr>
+			<td colspan=3>
+			<hr>
+			</td>
                     </tr>
                 </th>
                     <!-- Table row for the monthly sales goal gage and pie chart with
 			 Open Sales Orders -->
                 <tr>
-                <td colspan=3 style="text-align: center; align: center;">
-			<hr> <!-- PO: hr above the Sales gas gague -->
+		<td></td> <!-- Empty first column for gague alignment -->
+                <td colspan=1>
+<center>
+			<!-- <hr --> <!-- PO: hr above the Sales gas gague -->
 			<strong>
                         <?php
                             // Get the current month
@@ -279,7 +285,7 @@ require_once './functions/scrapFunction.php';
 
                             echo "$currentMonth Sales Goal<br> (Week $weekOfMonth)";
                         ?>
-                    </strong>
+                    	</strong>
                     <?php # Query Maria for the open sales orders Pie chart
                         $conn = connectRubiconTci();
                         $result = $conn->query("SELECT status, COUNT(*) as count FROM v_sos WHERE open = '1' GROUP BY status");
@@ -372,7 +378,9 @@ require_once './functions/scrapFunction.php';
 			<!-- Breaks to drop content below the Sales Pie Chart -->
 			<br><br><br>
 			<a href='salesdashboard.php' style="text-decoration: none; color: black;">Sales Dashboard</a>
+</center>
                 </td>
+		<td style='text-align: center;'></td> <!-- 3rd column -->
                 </tr>
                 <tr>
                     <td colspan=3>

@@ -50,10 +50,10 @@ function salesDashboardOpenOrders1($conn) {
     // Add column headers from query result
     $fields = mysqli_fetch_fields($result);
     foreach ($fields as $field) {
-        $html .= "<th style='padding: 8px; text-align: left; background-color: lightgrey;'>" . htmlspecialchars($field->name) . "</th>";
+        $html .= "<th style='padding: 8px; text-align: center; background-color: lightgrey;'>" . htmlspecialchars($field->name) . "</th>";
     }
 
-    $html .= "</tr></thead><tbody>";
+    $html .= "</tr></thead><tbody><center>";
 
     // Alternate row colors and add row counter
     $rowNum = 1;
@@ -62,11 +62,11 @@ function salesDashboardOpenOrders1($conn) {
         $html .= "<tr style='background-color: {$bgColor};'>";
         
         // Add row number as first column
-        $html .= "<td style='padding: 6px; text-align: center; font-weight: bold; background-color: #f9f9f9;'>" . $rowNum . "</td>";
+        $html .= "<td style='padding: 0px; text-align: center; font-weight: bold; background-color: #f9f9f9;'>" . $rowNum . "</td>";
 
         // Add the rest of the columns
         foreach ($row as $value) {
-            $html .= "<td style='padding: 6px;'>" . htmlspecialchars($value ?? '') . "</td>";
+            $html .= "<td style='padding: 0px; text-align: center;'><center>" . htmlspecialchars($value ?? '') . "</td>";
         }
 
         $html .= "</tr>";

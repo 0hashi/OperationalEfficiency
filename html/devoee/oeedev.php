@@ -85,11 +85,11 @@ require_once 'oeeTestFunctions.php';
                         <tr>
                             <th style="width: 100%; border: 1px solid #fff;">
                     <?php echo displayClock();?>
-                    <a href="http://it01/oee/oee.php" style="text-decoration: none; color: #36A2EB;">Main</a>
+                    <a href="http://tci-bt-linux01/oee/oee.php" style="text-decoration: none; color: #36A2EB;">Main</a>
                     <br><hr color=#ddecf0>
-                    <a href="http://it01/oee/quantByEmployee.php" style="text-decoration: none; color: #36A2EB;">Quantity</a>
+                    <a href="http://tci-bt-linux01/oee/quantByEmployee.php" style="text-decoration: none; color: #36A2EB;">Quantity</a>
                     <br><hr color=#ddecf0>
-                    <a href="http://it01/oee/operations.php" style="text-decoration: none; color: #36A2EB;">Operations</a>
+                    <a href="http://tci-bt-linux01/oee/operations.php" style="text-decoration: none; color: #36A2EB;">Operations</a>
                     <hr color=#ddecf0>
 							</th>
                         </tr>
@@ -104,7 +104,7 @@ WHERE
     type = 'Manufacturing Receipt'
     AND created_date_time >= CURDATE() + INTERVAL 8 HOUR
     AND created_date_time <= CURDATE() + INTERVAL 16 HOUR">
-                                <a href="http://it01/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">1st Shift</a>
+                                <a href="http://tci-bt-linux01/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">1st Shift</a>
                             </th>
                             <th style="width='50%'; width: 100%; border: 1px solid #fff;">
                                 <?php
@@ -123,7 +123,7 @@ WHERE
     type = 'Manufacturing Receipt'
     AND created_date_time >= (CURDATE() - INTERVAL 1 DAY) + INTERVAL 16 HOUR    # 4pm yesterday
     AND created_date_time <= CURDATE()  # Midnight last night">
-                                <a href="http://it01/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">2nd Shift</a>
+                                <a href="http://tci-bt-linux01/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">2nd Shift</a>
                             </th>
                             <th style="width='50%'; width: 100%; border: 1px solid #fff;">
                                 <?php
@@ -141,7 +141,7 @@ WHERE
     type = 'Manufacturing Receipt'
     AND created_date_time >= CURDATE()                      # Midnight last night
     AND created_date_time <= CURDATE() + INTERVAL 8 HOUR    # 8am today">
-                                <a href="http://it01/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">3rd Shift</a>
+                                <a href="http://tci-bt-linux01/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">3rd Shift</a>
                             </th style="width='50%'; width: 100%; border: 1px solid #fff;">
                             <th>
                                 <?php

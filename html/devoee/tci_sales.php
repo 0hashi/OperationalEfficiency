@@ -3,6 +3,9 @@
 $currentSales = 900000; // Replace with query from your DB
 ?>
 
+<!DOCTYPE html>
+<html>
+  <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {packages:['gauge']});
@@ -29,6 +32,8 @@ $currentSales = 900000; // Replace with query from your DB
         chart.draw(data, options);
       }
     </script>
-
+  </head>
+  <body>
     <div id="gauge_div" style="width: 400px; height: 200px;"></div>
-
+  </body>
+</html>
