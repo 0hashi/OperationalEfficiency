@@ -4,15 +4,13 @@
 # Trans Cable International
 # Started: July 2025
 #
-# This script is one part of an overall full-stack package of technologies including:
-#
-# Need some error reporting...yes, of course, because this tangled web of tech is madness...
+# Need some error reporting...yes, of course, because this tangled web of code is madness...
 #ini_set('display_errors', 1);
 #ini_set('display_startup_errors', 1);
 #error_reporting(E_ALL);
 
 require_once 'oeeFunctions.php';
-# Scrap line graph
+# Functions for scrap line graph
 require_once './functions/scrapFunction.php';
 ?>
 <html>
@@ -44,10 +42,13 @@ require_once './functions/scrapFunction.php';
 $conn = connectRubiconTci();
 $monthlyScrap = getMonthlyScrapTotals($conn);
 
+
 // Convert to JSON for JavaScript
 $lbsJSON = json_encode(array_values($monthlyScrap["lbs"]));
 $qtyJSON = json_encode(array_values($monthlyScrap["qty"]));
 $extJSON = json_encode(array_values($monthlyScrap["ext"]));
+
+echo "Monthly:\n $lbsJSON - $qtyJSON - $extJSON";
 ?>
     <canvas id="scrapLineChart" width="600" height="250"></canvas>
 

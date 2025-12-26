@@ -62,7 +62,7 @@ require_once './functions/scrapFunction.php';
 <body background=#ffffff>
     <!-- PO: Controls the border that surrounds the entire dashboard,
 	     including the navigation menu -->
-    <table style="width: 50%; max-width: 100%; border: 0px solid #000;">
+    <table style="width: 50%; max-width: 100%; border: 1px solid #000;">
 	<tr>
 	   <td colspan=4>
 		<div style="display: flex; align-items: center;">

@@ -568,7 +568,7 @@ function total_output_this_month($conn) {
 }
 
 function poweredBy() {
-    return '<table><tr style="color: #ffffff;"><td colspan=3 style="text-align: right;">
+    return '<table><tr style="color: #ffffff;"><td colspan=3 style="text-align: center;">
         Powered by Ohashisan</td></tr></table>';
 }
 
