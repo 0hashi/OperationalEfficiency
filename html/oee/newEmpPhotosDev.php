@@ -1,18 +1,47 @@
 <?php
-// Directory containing the photos (relative or absolute path)
-// The shortcut in X:\HR\TeamMemberPictures that links back to tci-bt-it04 (C:\inetpub\wwwroot\pics\TeamMemberPictures)
-$directory = "pics/TeamMemberPictures"; 
+$directory = "pics/TeamMemberPictures/Old Photos";
 
-// Image file extensions
 $extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
-// Scan $directory for employee image files
-$files = array_filter(scandir($directory), function($file) use ($directory, $extensions) {
+$rawFiles = array_filter(scandir($directory), function ($file) use ($directory, $extensions) {
     $path = "$directory/$file";
     $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
     return is_file($path) && in_array($ext, $extensions);
 });
+
+$files = [];
+
+foreach ($rawFiles as $file) {
+    $filename = pathinfo($file, PATHINFO_FILENAME);
+
+    // Match: "Firstname Lastname 12"
+    if (preg_match('/^(.*?)(?:\s+(\d+))$/', $filename, $matches)) {
+        $name = trim($matches[1]);
+        $id   = (int)$matches[2];
+    } else {
+        $name = $filename;
+        $id   = null;
+    }
+
+    $files[] = [
+        'file' => $file,
+        'name' => $name,
+        'id'   => $id
+    ];
+}
+
+// Custom sort: ID first (numeric), then names
+usort($files, function ($a, $b) {
+    if ($a['id'] !== null && $b['id'] !== null) {
+        return $a['id'] <=> $b['id'];
+    }
+    if ($a['id'] !== null) return -1;
+    if ($b['id'] !== null) return 1;
+    return strcasecmp($a['name'], $b['name']);
+});
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -185,13 +214,11 @@ h1 {
     </div>
 	</div>
     <div class="gallery">
-        <?php foreach ($files as $file): 
-            $name = pathinfo($file, PATHINFO_FILENAME); // get filename without extension
-        ?>
+        <?php foreach ($files as $entry): ?>
             <div class="gallery-item">
                 <strong>
-                <img src="<?= htmlspecialchars("$directory/$file") ?>" alt="<?= htmlspecialchars($name) ?>">
-                <div class="name"><?= htmlspecialchars($name) ?></div></strong>
+                <img src="<?= htmlspecialchars("$directory/{$entry['file']}") ?>" alt="<?= htmlspecialchars($entry['name']) ?>">
+				<div class="name"><?= htmlspecialchars($entry['name']) ?></div></strong>
             </div>
         <?php endforeach; ?>
     </div>
