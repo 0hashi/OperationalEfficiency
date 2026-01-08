@@ -1,6 +1,7 @@
 <?php
 // Directory containing the photos (relative or absolute path)
-$directory = "pics/TeamMemberPictures"; // Location of employee photos
+// The shortcut in X:\HR\TeamMemberPictures that links back to tci-bt-it04 (C:\inetpub\wwwroot\pics\TeamMemberPictures)
+$directory = "pics/TeamMemberPictures"; 
 
 // Image file extensions
 $extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
@@ -79,8 +80,8 @@ $files = array_filter(scandir($directory), function($file) use ($directory, $ext
     margin-top: 6px;
     font-size: 14px;
     font-weight: 600;
-    color: #0b4ea2; /* TCI-style blue */
-    color: #000000; /* TCI-style blue */
+    /* color: #0b4ea2; TCI-style blue */
+    color: #000000; /* TCI-style black */
     text-align: center;
     text-shadow:
         -1px -1px 0 #fff,
@@ -108,11 +109,16 @@ $files = array_filter(scandir($directory), function($file) use ($directory, $ext
     justify-content: center;
     gap: 24px;
     margin-bottom: 30px;
-    animation: glowPulse 2.5s ease-out;
+    animation: glowPulse 2.5s ease-out;  /* Glow fades out after 2.5 seconds */
+	animation: glowPulse 4s ease-in-out infinite; /* Over-rides the line above */
 }
 
 .logo {
     height: 80px;
+    border-radius: 12px;              /* rounds corners */
+    overflow: hidden;                 /* clips image corners */
+    background: #ffffff;              /* optional: clean edge */
+    padding: 6px;                     /* optional frame */
     filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
 }
 
@@ -145,7 +151,7 @@ h1 {
         0 0 10px rgba(11,78,162,0.6);
 }
 
-/* ===== Animated Glow on Refresh ===== */
+/* ===== Animated Glow on Refresh =====
 @keyframes glowPulse {
     0% {
         opacity: 0;
@@ -158,13 +164,21 @@ h1 {
     100% {
         filter: drop-shadow(0 0 6px rgba(11,78,162,0.6));
     }
+} */
+@keyframes glowPulse { /* Over-rides the block above and keeps the glow persistent. Comment entire block fade out the glow */
+    0%, 100% {
+        filter: drop-shadow(0 0 6px rgba(11,78,162,0.6));
+    }
+    50% {
+        filter: drop-shadow(0 0 18px rgba(11,78,162,0.95));
+    }
 }
 
 </style>
 </head>
 <body>
     <div class="header">
-    <img src="../pics/TransCableLogoModified.png" alt="TCI Logo" class="logo">
+    <img src="../pics/TransCableLogo.png" alt="TCI Logo" class="logo">
     <div class="title-block">
         <h1>Meet the TCI Team</h1>
         <div id="datetime"></div>
