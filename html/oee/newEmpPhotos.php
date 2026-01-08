@@ -98,11 +98,78 @@ $files = array_filter(scandir($directory), function($file) use ($directory, $ext
     @media (max-width: 480px) {
         .gallery { grid-template-columns: repeat(2, 1fr); }
     }
+	
+	
+	
+	/* ===== Header Lockup ===== */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 30px;
+    animation: glowPulse 2.5s ease-out;
+}
+
+.logo {
+    height: 80px;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
+}
+
+/* ===== Title Styling ===== */
+h1 {
+    margin: 0;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #0b4ea2;
+
+    text-shadow:
+        -2px -2px 0 #fff,
+         2px -2px 0 #fff,
+        -2px  2px 0 #fff,
+         2px  2px 0 #fff,
+         0  6px 14px rgba(0,0,0,0.45);
+}
+
+/* ===== Date / Time Banner ===== */
+#datetime {
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+
+    text-shadow:
+        0 0 4px rgba(11,78,162,0.9),
+        0 0 10px rgba(11,78,162,0.6);
+}
+
+/* ===== Animated Glow on Refresh ===== */
+@keyframes glowPulse {
+    0% {
+        opacity: 0;
+        filter: drop-shadow(0 0 0 rgba(11,78,162,0));
+    }
+    60% {
+        opacity: 1;
+        filter: drop-shadow(0 0 20px rgba(11,78,162,0.9));
+    }
+    100% {
+        filter: drop-shadow(0 0 6px rgba(11,78,162,0.6));
+    }
+}
+
 </style>
 </head>
 <body>
-    <img src="../pics/TransCableLogoModified.png" alt="TCI Logo">
-    <h1>Meet the TCI Team</h1>
+    <div class="header">
+    <img src="../pics/TransCableLogoModified.png" alt="TCI Logo" class="logo">
+    <div class="title-block">
+        <h1>Meet the TCI Team</h1>
+        <div id="datetime"></div>
+    </div>
+	</div>
     <div class="gallery">
         <?php foreach ($files as $file): 
             $name = pathinfo($file, PATHINFO_FILENAME); // get filename without extension
@@ -114,5 +181,26 @@ $files = array_filter(scandir($directory), function($file) use ($directory, $ext
             </div>
         <?php endforeach; ?>
     </div>
+	
+	
+	<script>
+function updateDateTime() {
+    const now = new Date();
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    };
+    document.getElementById('datetime').textContent =
+        now.toLocaleDateString(undefined, options);
+}
+
+updateDateTime();
+setInterval(updateDateTime, 60000); // update every minute
+</script>
+
 </body>
 </html>
