@@ -1,4 +1,10 @@
 <?php
+# Paul Ohashi
+# Trans Cable International
+# Script: newEmpPhotosDev.php
+# 
+# This script displays employee photos on the monitor in the breakroom, and runs on tci-bt-it04
+#
 $directory = "pics/TeamMemberPictures/Old Photos";
 
 $extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
@@ -72,7 +78,7 @@ usort($files, function ($a, $b) {
     font-weight: 800;
     letter-spacing: 1px;
 
-    color: #0066ff; /* TCI blue */
+    color: #0066ff; /* PO: TCI blue */
     text-shadow:
         -2px -2px 0 #fff,
          2px -2px 0 #fff,
@@ -82,23 +88,23 @@ usort($files, function ($a, $b) {
 	}
     .gallery {
         display: grid;
-        grid-template-columns: repeat(10, 1fr); /* 10 columns */
+        grid-template-columns: repeat(12, 1fr); /* PO: 10 columns */
         gap: 8px;
         justify-items: center;
     }
     .gallery-item {
-    width: 132px;
-    padding: 6px;
-    background: linear-gradient(145deg, #1a1a1a, #000);
+    width: 70px; /* PO: Width of the photo frame. Should be greater than ".gallery img -> Width" */
+    padding: 16px; /* PO: Padding for left, right, top and bottom of frame around the photo */
+    background: linear-gradient(145deg, #1a1a1a, #0066ff);
     border-radius: 12px;
     box-shadow: 0 8px 18px rgba(0,0,0,0.5);
 	}
     .gallery img {
-    width: 120px;
-    height: 200px;
+    width: 60px; /* PO: Width of the photo */
+    height: 100px; /* PO: Height of the photo */
     object-fit: cover;
     border: 1px solid #ccc;
-    background: #0066ff;  /*Interior frame color */
+    background: #0066ff;  /* PO: Interior frame color */
     padding: 4px;
 	}
     .gallery img:hover {
@@ -109,8 +115,8 @@ usort($files, function ($a, $b) {
     margin-top: 6px;
     font-size: 14px;
     font-weight: 600;
-    /* color: #0b4ea2; TCI-style blue */
-    color: #000000; /* TCI-style black */
+    /* color: #0b4ea2; PO: TCI-style blue */
+    color: #000000; /* PO: TCI-style black */
     text-align: center;
     text-shadow:
         -1px -1px 0 #fff,
@@ -154,8 +160,8 @@ usort($files, function ($a, $b) {
 /* ===== Title Styling ===== */
 h1 {
     margin: 0;
-    font-size: 42px;
-    font-weight: 800;
+    font-size: 42px; /* PO: Font size for whatever text is between <h1></h1> */
+    font-weight: 800; /* PO: Font thickness */
     letter-spacing: 1px;
     color: #0b4ea2;
 
@@ -180,20 +186,8 @@ h1 {
         0 0 10px rgba(11,78,162,0.6);
 }
 
-/* ===== Animated Glow on Refresh =====
-@keyframes glowPulse {
-    0% {
-        opacity: 0;
-        filter: drop-shadow(0 0 0 rgba(11,78,162,0));
-    }
-    60% {
-        opacity: 1;
-        filter: drop-shadow(0 0 20px rgba(11,78,162,0.9));
-    }
-    100% {
-        filter: drop-shadow(0 0 6px rgba(11,78,162,0.6));
-    }
-} */
+/* ===== Animated Glow on Refresh ===== */
+
 @keyframes glowPulse { /* Over-rides the block above and keeps the glow persistent. Comment entire block fade out the glow */
     0%, 100% {
         filter: drop-shadow(0 0 6px rgba(11,78,162,0.6));

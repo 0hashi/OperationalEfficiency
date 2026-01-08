@@ -1,4 +1,10 @@
 <?php
+# Paul Ohashi
+# Trans Cable International
+# Script: newEmpPhotos.php
+# 
+# This script displays employee photos on the monitor in the breakroom, and runs on tci-bt-it04
+#
 $directory = "pics/TeamMemberPictures";
 
 $extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
@@ -41,8 +47,6 @@ usort($files, function ($a, $b) {
 });
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,27 +84,31 @@ usort($files, function ($a, $b) {
          2px  2px 0 #fff,
          0  6px 14px rgba(0,0,0,0.4);
 	}
+	
     .gallery {
         display: grid;
         grid-template-columns: repeat(10, 1fr); /* 10 columns */
         gap: 8px;
         justify-items: center;
     }
+	
     .gallery-item {
     width: 132px;
     padding: 6px;
-    background: linear-gradient(145deg, #1a1a1a, #000);
+    background: linear-gradient(145deg, #1a1a1a, #0066ff);
     border-radius: 12px;
     box-shadow: 0 8px 18px rgba(0,0,0,0.5);
 	}
+	
     .gallery img {
     width: 120px;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
     border: 1px solid #ccc;
     background: #0066ff;  /*Interior frame color */
     padding: 4px;
 	}
+	
     .gallery img:hover {
         transform: scale(1.05);
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
@@ -119,6 +127,7 @@ usort($files, function ($a, $b) {
          1px  1px 0 #fff;
     word-break: break-word;
 	}
+	
     @media (max-width: 1200px) {
         .gallery { grid-template-columns: repeat(5, 1fr); }
     }
