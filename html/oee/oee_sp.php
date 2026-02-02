@@ -26,7 +26,7 @@ require_once './functions/scrapFunction.php';
 <head>
     <!-- meta tag below - change dashboard view every X seconds. bounce from the OE dashboard to the sales dashboard -->
     <!--meta http-equiv="refresh" content="60; URL='https://tci-bt-linux01/dev-oee/salesdashboard.php'"-->
-    <title>OE</title>
+    <title>DevTOE</title>
 	<!-- Load the chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<!-- A pointer to CSS that:
@@ -41,7 +41,7 @@ require_once './functions/scrapFunction.php';
 	<style>
     /* Remove scrollbars */
     html, body {
-        margin: 10;
+        margin: 30;
         padding: 0;
         overflow-x:     /* hides or shows X scrollbars with 'hidden' or blank */
         overflow-y:     /* hides or shows Y scrollbars with 'hidden' or blank */
@@ -56,16 +56,19 @@ require_once './functions/scrapFunction.php';
         max-height: 100%;
         border-collapse: collapse;
     }
-
-    body {
-    zoom: 45%;
-    }
     </style>
-
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!-- style: controls the display size of the dashboard in a browser -->
+<style>
+  body {
+    transform: scale(0.6);         /* Shrinks content to 80% (100% = 1.0) */
+    transform-origin: top left;    /* Keeps it aligned at top-left */
+    width: 125%;                   /* Compensates for shrinking to fill iframe width */
+    /* height: 100%;		   /* Compensates for shrinking to fill iframe height (This setting does strange things to the ticker) */
+    overflow: hidden;              /* Optional: remove scrollbars in iframe */
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
 
 </head>
 <body background=#ffffff>
@@ -111,11 +114,11 @@ require_once './functions/scrapFunction.php';
 				 navigation menu table  -->
                             <th style="width: 100%; border: 0px solid #000;">
                     <?php echo displayClock();?>
-                    <a href="/oee/oee.php" style="text-decoration: none; color: #36A2EB;">Main</a>
+                    <a href="http://tci-bt-linux01/oee/oee.php" style="text-decoration: none; color: #36A2EB;">Main</a>
                     <br><hr color=#ddecf0>
-                    <a href="/oee/quantByEmployee.php" style="text-decoration: none; color: #36A2EB;">Quantity</a>
+                    <a href="http://tci-bt-linux01/oee/quantByEmployee.php" style="text-decoration: none; color: #36A2EB;">Quantity</a>
                     <br><hr color=#ddecf0>
-                    <a href="/oee/operations.php" style="text-decoration: none; color: #36A2EB;">Operations</a>
+                    <a href="http://tci-bt-linux01/oee/operations.php" style="text-decoration: none; color: #36A2EB;">Operations</a>
                     <hr color=#ddecf0>
 							</th>
                         </tr>
@@ -132,7 +135,7 @@ require_once './functions/scrapFunction.php';
                             <th style="width='50%'; width: 100%; border: 0px solid #000;">
                                 <strong><p>
 
-                                <a href="/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">1st Shift</a>
+                                <a href="http://tci-bt-linux01/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">1st Shift</a>
                             </th>
 			    <!-- PO: controls the border around the 1st Shift total in
 				 the main navigation menu  -->
@@ -148,7 +151,7 @@ require_once './functions/scrapFunction.php';
 				 the right side, in the main navigation menu  -->
                             <th style="width='50%'; width: 100%; border: 0px solid #000;">
                                 <strong><p>
-                                <a href="/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">2nd Shift</a>
+                                <a href="http://tci-bt-linux01/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">2nd Shift</a>
                             </th>
 			    <!-- PO: controls the border around the 2nd Shift numbers (footage) in the
 				 main navigation menu  -->
@@ -162,7 +165,7 @@ require_once './functions/scrapFunction.php';
 			    <!-- PO: controls the border around the text "3rd Shift" -->
                             <th style="width='50%'; width: 100%; border: 0px solid #000;">
                                 <strong><p>
-                                <a href="/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">3rd Shift</a>
+                                <a href="http://tci-bt-linux01/oee/oeeoperatorefficiency.php" style="text-decoration: none; color: #000;">3rd Shift</a>
                             </th style="width='50%'; width: 100%;">
 			    <!-- PO: controls the border around the 3rd Shift numbers (footage) in the
 				 main navigation menu  -->
@@ -288,8 +291,8 @@ require_once './functions/scrapFunction.php';
                             // Get the current month
                             $currentMonth = date('F');
                             // Get current day of the month
-                            $dayOfMonth = date('j');  // 1â€“31
-                            // Calculate week number (week 1 = days 1â€“7, week 2 = 8â€“14, etc.)
+                            $dayOfMonth = date('j');  // 1–31
+                            // Calculate week number (week 1 = days 1–7, week 2 = 8–14, etc.)
                             $weekOfMonth = ceil($dayOfMonth / 7);
 
                             echo "$currentMonth Sales Goal<br> (Week $weekOfMonth)";
@@ -545,237 +548,13 @@ require_once './functions/scrapFunction.php';
                                  <td colspan=4>
 				<iframe 
     					src="scraplinegraph.php" 
-    					width="880" 
-    					height="350" 
+    					width="750" 
+    					height="250" 
     					style="border:0; overflow:hidden"
     					scrolling="no">
 				</iframe>
 				<hr>
 			</table>
-
-<!-- Audit dashboard  -->
-<!-- 2026 SCRAP GOAL  -->
-<table style="vertical-align: top;">
-<tr>
-<td>
-
-
-
-<table>
-<tr style="background-color: lightgrey; font-weight: bold;">
-	    <td colspan=5 style="text-align: center; font-weight: bold;">
-		Production Scrap KPI
-	    </td>
-</tr>
-<tr style="background-color: lightgrey; font-weight: bold;">
-            <td colspan=2 style="text-align: center; font-weight: bold;">
-                2025 SCRAP GOAL &le; 5%
-            </td>
-	</tr>
-        <tr>
-            <td style="background-color: #ddecf0;">
-                1st Qtr
-            </td>
-            <td style="background-color: #ddecf0;">
-                8%
-            </td>
-        </tr>
-        <tr>
-            <td>
-                2nd Qtr
-            </td>
-            <td>
-                5%
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color: #ddecf0;">
-                3rd Qtr
-            </td>
-            <td style="background-color: #ddecf0;">
-                5%
-            </td>
-        </tr>
-        <tr>
-            <td>
-                4th Qtr
-            </td>
-            <td>
-                5%
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color: #ddecf0; font-weight: bold;">
-                2025 AVG
-            </td>
-            <td style="background-color: #ddecf0; font-weight: bold;">
-                6%
-            </td>
-        </tr>
-        <tr>
-            <td colspan=2>
-            </td>
-        </tr>
-<!-- 2026 SCRAP GOAL  -->
-        <tr style="background-color: lightgrey; font-weight: bold;">
-            <td colspan=2 style="text-align: center; font-weight: bold;">
-                2026 SCRAP GOAL &le; 5%
-            </td>
-        <tr>
-            <td style="background-color: #ddecf0;">
-                Jan
-            </td>
-            <td style="background-color: #ddecf0;">
-                5%
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Feb
-            </td>
-            <td>
-                0%
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color: #ddecf0;">
-                Mar
-            </td>
-            <td style="background-color: #ddecf0;">
-                0%
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Apr
-            </td>
-            <td>
-                0%
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color: #ddecf0; font-weight: bold;">
-                2026 AVG
-            </td>
-            <td style="background-color: #ddecf0; font-weight: bold;">
-                5%
-            </td>
-        </tr>
-</td>
-</tr>
-</table>
-
-
-</td>
-<td width=30px>
-<!-- Center column  -->
-</td>
-<td> <!-- 3rd column OTD Goals -->
-        <table>
-            <tr>
-                <td colspan=2 style="text-align: center; font-weight: bold; background-color: lightgrey;">
-                        2025 OTD GOAL &ge; 95%
-                </td>
-            <tr>
-            </tr>
-                <td style="background-color: #ddecf0;">
-                        1st Qtr
-                </td>
-                <td style="background-color: #ddecf0;">
-                        98%
-                </td>
-            </tr>
-            <tr>
-            </tr>
-                <td>
-                        2nd Qtr
-                </td>
-                <td>
-                        100%
-                </td>
-            </tr>
-            <tr>
-            </tr>
-                <td style="background-color: #ddecf0;">
-                        3rd Qtr
-                </td>
-                <td style="background-color: #ddecf0;">
-                        99%
-                </td>
-            </tr>
-            <tr>
-            </tr>
-                <td>
-                        4th Qtr
-                </td>
-                <td>
-                        95%
-                </td>
-            </tr>
-            <tr>
-            </tr>
-                <td style="font-weight: bold; background-color: #ddecf0;">
-                        2025 AVG
-                </td>
-                <td style="font-weight: bold; background-color: #ddecf0;">
-                        98%
-                </td>
-            </tr>
-            <tr>
-                <td colspan=2>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=2 style="text-align: center; font-weight: bold; background-color: lightgrey;">
-                        2026 OTD GOAL &le; 95%
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: #ddecf0;">
-                        Jan
-                </td>
-                <td style="background-color: #ddecf0;"`>
-                        98%
-                </td>
-            </tr>
-            <tr>
-                <td>
-                        Feb
-                </td>
-                <td>
-                        0%
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: #ddecf0;">
-                        Mar
-                <td style="background-color: #ddecf0;">
-                        0%
-                </td>
-            </tr>
-            <tr>
-                <td>
-                        Apr
-                </td>
-                <td>
-                        0%
-                </td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold; background-color: #ddecf0;">
-                        2026 AVG
-                </td>
-                <td style="font-weight: bold; background-color: #ddecf0;">
-                        98%
-                </td>
-            </tr>
-
-</td>
-
-
-</tr>
-</table>
-
 <!-- TICKER -->
         <tr>
             <td>
